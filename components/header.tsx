@@ -35,18 +35,18 @@ async function UserOrLogin() {
         </Link>
       )}
       <div className="flex items-center">
-        <IconSeparator className="size-6 text-muted-foreground/50" />
+        {/*<IconSeparator className="size-6 text-muted-foreground/50" />*/}
         {session?.user ? (
           <UserMenu user={session.user} />
         ) : (
           <Button variant="link" asChild className="-ml-2">
-            {/*<Link href="/login">Login</Link>*/}
-            <LoginButton
+            <Link href="/">ICPGPT</Link>
+            {/*<LoginButton
               variant="link"
               showGithubIcon={true}
               text="Login"
               className="-ml-2"
-            />
+            />*/}
           </Button>
         )}
       </div>
@@ -63,7 +63,7 @@ export function Header() {
         </React.Suspense>
       </div>
       <div className="flex items-center justify-end gap-2">
-        <Button asChild size="sm" variant="outline">
+        {/*<Button asChild size="sm" variant="outline">
           <a
             target="_blank"
             href="https://github.com/vercel-labs/gemini-chatbot"
@@ -72,15 +72,15 @@ export function Header() {
             <IconGitHub />
             <span className="hidden ml-2 md:flex">GitHub</span>
           </a>
-        </Button>
+        </Button>*/}
         <Button asChild size="sm" className="rounded-lg gap-1">
           <a
-            href="https://vercel.com/templates/next.js/gemini-ai-chatbot"
+            href=""
             target="_blank"
           >
-            <IconVercel className="size-3" />
-            <span className="hidden sm:block">Deploy to Vercel</span>
-            <span className="sm:hidden">Deploy</span>
+            {/*<IconVercel className="size-3" />*/}
+            <span className="hidden sm:block">Connect Wallet</span>
+            <span className="sm:hidden">Connect Wallet</span>
           </a>
         </Button>
       </div>

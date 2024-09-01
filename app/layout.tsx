@@ -12,11 +12,11 @@ import { KasadaClient } from '@/lib/kasada/kasada-client'
 export const metadata = {
   metadataBase: new URL('https://gemini.vercel.ai'),
   title: {
-    default: 'Next.js Gemini Chatbot',
-    template: `%s - Next.js Gemini Chatbot`
+    default: 'ICPGPT',
+    template: ``
   },
   description:
-    'Build your own generative UI chatbot using the Vercel AI SDK and Google Gemini',
+    'Write and Deploy smart contract on ICP using natural language prompt.',
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',

@@ -157,7 +157,7 @@ export function PromptForm({
                 type="submit"
                 size="icon"
                 disabled={input === ''}
-                className="bg-transparent shadow-none text-zinc-950 rounded-full hover:bg-zinc-200"
+                className="bg-transparent shadow-none text-zinc-50 rounded-full hover:bg-zinc-900"
               >
                 <IconArrowElbow />
                 <span className="sr-only">Send message</span>

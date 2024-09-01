@@ -10,6 +10,8 @@ import { coldarkDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { useCopyToClipboard } from '@/lib/hooks/use-copy-to-clipboard'
 import { IconCheck, IconCopy, IconDownload } from '@/components/ui/icons'
 import { Button } from '@/components/ui/button'
+import { DeployContractButton } from '../deploy-contract-button'
+import { DeployFrontentButton } from '../deploy-fronted-button'
 
 interface Props {
   language: string
@@ -43,7 +45,9 @@ export const programmingLanguages: languageMap = {
   shell: '.sh',
   sql: '.sql',
   html: '.html',
-  css: '.css'
+  css: '.css',
+  solidity: '.sol',
+  motoko: '.mo'
   // add more file extensions here, make sure the key is same as language prop in CodeBlock.tsx component
 }
 
@@ -97,6 +101,12 @@ const CodeBlock: FC<Props> = memo(({ language, value }) => {
       <div className="flex items-center justify-between w-full px-6 py-2 pr-4 bg-zinc-800 text-zinc-100">
         <span className="text-xs lowercase">{language}</span>
         <div className="flex items-center space-x-1">
+          {language === 'motoko' && (
+            <DeployContractButton sourceCode={value} />
+          )}
+          {language === 'html' && (
+            <DeployFrontentButton sourceCode={value} />
+          )}
           <Button
             variant="ghost"
             className="hover:bg-zinc-800 focus-visible:ring-1 focus-visible:ring-slate-700 focus-visible:ring-offset-0"

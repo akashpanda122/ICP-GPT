@@ -38,14 +38,14 @@ export function ChatPanel({
 
   const exampleMessages = [
     {
-      heading: 'List flights flying from',
-      subheading: 'San Francisco to Rome today',
-      message: `List flights flying from San Francisco to Rome today`
+      heading: 'What is',
+      subheading: 'ICP?',
+      message: `What is ICP?`
     },
     {
-      heading: 'What is the status',
-      subheading: 'of flight BA142?',
-      message: 'What is the status of flight BA142?'
+      heading: 'Write a hello world',
+      subheading: 'smart contarct on motoko?',
+      message: 'Write a hello world smart contract on motoko?'
     }
   ]
 
