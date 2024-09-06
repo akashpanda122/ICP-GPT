@@ -8,6 +8,8 @@ import { Providers } from '@/components/providers'
 import { Header } from '@/components/header'
 import { Toaster } from '@/components/ui/sonner'
 import { KasadaClient } from '@/lib/kasada/kasada-client'
+import { IdentityProvider } from '../context/AppContext'
+//import { InternetIdentityProvider } from "ic-use-internet-identity";
 
 export const metadata = {
   metadataBase: new URL('https://gemini.vercel.ai'),
@@ -45,21 +47,31 @@ export default function RootLayout({ children }: RootLayoutProps) {
           GeistMono.variable
         )}
       >
-        <KasadaClient />
-        <Toaster position="top-center" />
-        <Providers
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="flex flex-col min-h-screen bg-black">
-            <Header />
-            <main className="flex flex-col flex-1">{children}</main>
-          </div>
-          <TailwindIndicator />
-        </Providers>
-        <Analytics />
+        
+          <KasadaClient />
+          <Toaster position="top-center" />
+        
+          <Providers
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <IdentityProvider>
+            <>
+            <div className="flex flex-col min-h-screen bg-black">
+            
+              <Header />
+              <main className="flex flex-col flex-1">{children}</main>
+            
+            </div>
+            <TailwindIndicator />
+            </>
+            </IdentityProvider>
+          </Providers>
+          
+          <Analytics />
+        
       </body>
     </html>
   )

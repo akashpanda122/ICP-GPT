@@ -1,3 +1,5 @@
+'use client'
+
 /* eslint-disable @next/next/no-img-element */
 import * as React from 'react'
 import Link from 'next/link'
@@ -17,6 +19,9 @@ import { SidebarToggle } from './sidebar-toggle'
 import { ChatHistory } from './chat-history'
 import { Session } from '@/lib/types'
 import { LoginButton } from './login-button'
+import { IILogin, IILogout } from '../lib/auth';
+import { useIdentity } from '../context/AppContext';
+//import { useInternetIdentity } from "ic-use-internet-identity";
 
 async function UserOrLogin() {
   const session = (await auth()) as Session
@@ -55,6 +60,23 @@ async function UserOrLogin() {
 }
 
 export function Header() {
+
+  const { identity, setIdentity } = useIdentity();
+  //const { login, loginStatus } = useInternetIdentity();
+
+  //const disabled = loginStatus === "logging-in" || loginStatus === "success";
+  //const text = loginStatus === "logging-in" ? "Logging in..." : "Login";
+
+  const handleLogout = () => {
+    IILogout().then(() => {
+      setIdentity("");
+    });
+  };
+
+  const handleConnect = () => {
+    IILogin().then((id) => setIdentity(id));
+  };
+
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between w-full h-16 px-4 shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
       <div className="flex items-center">
@@ -73,16 +95,32 @@ export function Header() {
             <span className="hidden ml-2 md:flex">GitHub</span>
           </a>
         </Button>*/}
-        <Button asChild size="sm" className="rounded-lg gap-1">
+        {/*<Button asChild size="sm" className="rounded-lg gap-1">
           <a
             href=""
             target="_blank"
           >
-            {/*<IconVercel className="size-3" />*/}
+            <IconVercel className="size-3" />
             <span className="hidden sm:block">Connect Wallet</span>
             <span className="sm:hidden">Connect Wallet</span>
           </a>
-        </Button>
+        </Button>*/}
+
+        {identity ? (
+          <Button asChild size="sm" className="rounded-lg gap-1">
+            <span onClick={handleLogout} className="hidden sm:block">{identity.slice(0, 6) + "..." + identity.slice(-4)}</span>
+            <span onClick={handleLogout} className="sm:hidden">{identity.slice(0, 6) + "..." + identity.slice(-4)}</span>
+          </Button>
+        ) : (
+          <Button asChild size="sm" className="rounded-lg gap-1">
+            <span onClick={handleConnect} className="hidden sm:block">Connect Wallet</span>
+            <span onClick={handleConnect} className="sm:hidden">Connect Wallet</span>
+          </Button>
+        )}
+
+        {/*/<button onClick={login} disabled={disabled}>
+          {text}
+        </button>*/}
       </div>
     </header>
   )

@@ -5,12 +5,13 @@ import * as React from 'react'
 import { ThemeProviderProps } from 'next-themes/dist/types'
 import { SidebarProvider } from '@/lib/hooks/use-sidebar'
 import { TooltipProvider } from '@/components/ui/tooltip'
+//import { IdentityProvider } from '../context/AppContext'
 
 export function Providers({ children, ...props }: ThemeProviderProps) {
   return (
     <NextThemesProvider {...props}>
       <SidebarProvider>
-        <TooltipProvider>{children}</TooltipProvider>
+        <TooltipProvider><>{children}</></TooltipProvider>
       </SidebarProvider>
     </NextThemesProvider>
   )

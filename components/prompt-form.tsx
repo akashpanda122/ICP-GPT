@@ -8,7 +8,7 @@ import { useActions, useUIState } from 'ai/rsc'
 import { UserMessage } from './stocks/message'
 import { type AI } from '@/lib/chat/actions'
 import { Button } from '@/components/ui/button'
-import { IconArrowElbow, IconPlus } from '@/components/ui/icons'
+import { IconArrowElbow, IconHome } from '@/components/ui/icons'
 import {
   Tooltip,
   TooltipContent,
@@ -17,6 +17,7 @@ import {
 import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
 import { nanoid } from 'nanoid'
 import { toast } from 'sonner'
+import Link from 'next/link'
 
 export function PromptForm({
   input,
@@ -125,12 +126,11 @@ export function PromptForm({
           variant="outline"
           size="icon"
           className="absolute left-4 top-[14px] size-8 rounded-full bg-background p-0 sm:left-4"
-          onClick={() => {
-            fileRef.current?.click()
-          }}
         >
-          <IconPlus />
+          <Link href="/new" rel="nofollow">
+          <IconHome />
           <span className="sr-only">New Chat</span>
+          </Link>
         </Button>
         {/* </TooltipTrigger>
           <TooltipContent>Add Attachments</TooltipContent>
