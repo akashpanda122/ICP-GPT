@@ -109,12 +109,10 @@ export function Header() {
         {identity ? (
           <Button asChild size="sm" className="rounded-lg gap-1">
             <span onClick={handleLogout} className="hidden sm:block">{identity.slice(0, 6) + "..." + identity.slice(-4)}</span>
-            <span onClick={handleLogout} className="sm:hidden">{identity.slice(0, 6) + "..." + identity.slice(-4)}</span>
           </Button>
         ) : (
           <Button asChild size="sm" className="rounded-lg gap-1">
             <span onClick={handleConnect} className="hidden sm:block">Connect Wallet</span>
-            <span onClick={handleConnect} className="sm:hidden">Connect Wallet</span>
           </Button>
         )}
 

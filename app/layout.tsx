@@ -10,6 +10,7 @@ import { Toaster } from '@/components/ui/sonner'
 import { KasadaClient } from '@/lib/kasada/kasada-client'
 import { IdentityProvider } from '../context/AppContext'
 //import { InternetIdentityProvider } from "ic-use-internet-identity";
+import {Fragment} from 'react';
 
 export const metadata = {
   metadataBase: new URL('https://gemini.vercel.ai'),
@@ -47,7 +48,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           GeistMono.variable
         )}
       >
-        
+        <IdentityProvider>
+        <Fragment>
           <KasadaClient />
           <Toaster position="top-center" />
         
@@ -57,7 +59,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             enableSystem
             disableTransitionOnChange
           >
-            <IdentityProvider>
+            
             <>
             <div className="flex flex-col min-h-screen bg-black">
             
@@ -67,11 +69,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </div>
             <TailwindIndicator />
             </>
-            </IdentityProvider>
+            
           </Providers>
           
           <Analytics />
-        
+        </Fragment>
+        </IdentityProvider>
       </body>
     </html>
   )
