@@ -3,7 +3,7 @@ import { GeistMono } from 'geist/font/mono'
 import { Analytics } from '@vercel/analytics/react'
 import '@/app/globals.css'
 import { cn } from '@/lib/utils'
-import { TailwindIndicator } from '@/components/tailwind-indicator'
+//import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { Providers } from '@/components/providers'
 import { Header } from '@/components/header'
 import { Toaster } from '@/components/ui/sonner'
@@ -21,8 +21,8 @@ export const metadata = {
   description:
     'Write and Deploy smart contract on ICP using natural language prompt.',
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
+    icon: '/ICPGPT.png',
+    shortcut: '/ICPGPT.png',
     apple: '/apple-touch-icon.png'
   }
 }
@@ -67,7 +67,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <main className="flex flex-col flex-1">{children}</main>
             
             </div>
-            <TailwindIndicator />
+            {/*<TailwindIndicator />*/}
             </>
             
           </Providers>

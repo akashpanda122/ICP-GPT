@@ -1,12 +1,13 @@
 'use client'
 
 /* eslint-disable @next/next/no-img-element */
-import * as React from 'react'
+import { Suspense } from 'react'
 import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
 import { auth } from '@/auth'
 import { Button, buttonVariants } from '@/components/ui/button'
+import Image from 'next/image'
 import {
   IconGitHub,
   IconNextChat,
@@ -14,6 +15,11 @@ import {
   IconVercel
 } from '@/components/ui/icons'
 import { UserMenu } from '@/components/user-menu'
+import { Sidebar } from '@/components/sidebar'
+import { SidebarList } from '@/components/sidebar-list'
+import { SidebarFooter } from '@/components/sidebar-footer'
+import { ClearHistory } from '@/components/clear-history'
+import { clearChats } from '@/app/actions'
 import { SidebarMobile } from './sidebar-mobile'
 import { SidebarToggle } from './sidebar-toggle'
 import { ChatHistory } from './chat-history'
@@ -23,8 +29,8 @@ import { IILogin, IILogout } from '../lib/auth';
 import { useIdentity } from '../context/AppContext';
 //import { useInternetIdentity } from "ic-use-internet-identity";
 
-async function UserOrLogin() {
-  const session = (await auth()) as Session
+{/*async function UserOrLogin() {
+  const session = await auth()
   return (
     <>
       {session?.user ? (
@@ -40,24 +46,24 @@ async function UserOrLogin() {
         </Link>
       )}
       <div className="flex items-center">
-        {/*<IconSeparator className="size-6 text-muted-foreground/50" />*/}
+        <IconSeparator className="size-6 text-muted-foreground/50" />
         {session?.user ? (
           <UserMenu user={session.user} />
         ) : (
           <Button variant="link" asChild className="-ml-2">
             <Link href="/">ICPGPT</Link>
-            {/*<LoginButton
+            <LoginButton
               variant="link"
               showGithubIcon={true}
               text="Login"
               className="-ml-2"
-            />*/}
+            />
           </Button>
         )}
       </div>
     </>
   )
-}
+}*/}
 
 export function Header() {
 
@@ -77,12 +83,29 @@ export function Header() {
     IILogin().then((id) => setIdentity(id));
   };
 
+  //const session = await auth()
+
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between w-full h-16 px-4 shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
       <div className="flex items-center">
-        <React.Suspense fallback={<div className="flex-1 overflow-auto" />}>
-          <UserOrLogin />
-        </React.Suspense>
+        {/*<Sidebar>
+          <Suspense fallback={<div className="flex-1 overflow-auto" />}>
+            <SidebarList />
+          </Suspense>
+          <SidebarFooter className="justify-end">
+            {<ClearHistory clearChats={clearChats} />}
+          </SidebarFooter>
+        </Sidebar>*/}
+        <div className="flex items-center">
+          {/*<IconSeparator className="size-6 text-muted-foreground/50" />*/}
+          <Image
+            src="/ICPGPT.png"
+            alt="ICPGPT logo"
+            width={50}
+            height={50}
+          />
+          <Link href="/">GPT</Link>
+        </div>
       </div>
       <div className="flex items-center justify-end gap-2">
         {/*<Button asChild size="sm" variant="outline">
@@ -112,7 +135,7 @@ export function Header() {
           </Button>
         ) : (
           <Button asChild size="sm" className="rounded-lg gap-1">
-            <span onClick={handleConnect} className="hidden sm:block">Connect Wallet</span>
+            <span onClick={handleConnect} className="text-xl hidden sm:block">Internet Identity</span>
           </Button>
         )}
 

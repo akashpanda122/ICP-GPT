@@ -5,7 +5,7 @@ import { headers } from 'next/headers'
 import Redis from 'redis'
 
 // @ts-ignore
-const geminiRatelimit = new Ratelimit({
+{/*const geminiRatelimit = new Ratelimit({
   redis: kv as Redis,
   limiter: Ratelimit.slidingWindow(60, '1 m'),
   analytics: true,
@@ -21,4 +21,4 @@ export async function rateLimit() {
   if (!limit.success) {
     redirect('/waiting-room')
   }
-}
+}*/}
