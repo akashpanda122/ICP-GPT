@@ -13,7 +13,7 @@ import { IdentityProvider } from '../context/AppContext'
 import {Fragment} from 'react';
 
 export const metadata = {
-  metadataBase: new URL('https://gemini.vercel.ai'),
+  metadataBase: new URL('https://icp-gpt.vercel.app/'),
   title: {
     default: 'ICPGPT',
     template: ``

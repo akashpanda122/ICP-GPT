@@ -11,7 +11,7 @@ export function EmptyScreen() {
           Write and Deploy smart contracts on ICP using natual language Prompts.
         </p>
         <p className="leading-normal text-muted-foreground">
-          
+          ICPGPT is a powerful tool that leverages the capabilities of Gemini model to provide users with contextually relevant answers from the ICP documentation. It serves as a bridge between user queries and the vast knowledge base of ICP.
         </p>
       </div>
     </div>
